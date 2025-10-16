@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+div {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+div:nth-of-type(1) {
+    background-color: lightblue;
+    border: 10px solid black;
+    padding: 20px;
+    top: 0;
+    left: 0;
+}
+
+div:nth-of-type(2) {
+    background-color: lightcoral;
+    border: 20px solid darkgray;
+    margin-left: calc(200px + 10px + 20px - 20px);
+    margin-top: calc(-200px - 10px - 20px + 20px);
+}
+
+div:nth-of-type(3) {
+    background-color: lightgreen;
+    border: 10px solid navy;
+    margin-left: calc(200px + 20px - 10px);
+    margin-top: calc(-200px - 20px + 10px);
+}

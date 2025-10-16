@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.mondrian-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1.5fr 1fr;
+    width: 600px;
+    height: 600px;
+    border: 10px solid black;
+    gap: 10px;
+    background-color: black;
+}
+
+.mondrian-container > div {
+    background-color: white;
+    border: none;
+}
+
+.red {
+    background-color: red !important;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.yellow {
+    background-color: yellow !important;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+.blue {
+    background-color: blue !important;
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+}
+
+.white.large {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.white.medium {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.white.small {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
