@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .greeting-list, .todo-list { margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+        .greeting-item, .todo-item { margin-bottom: 8px; display: flex; align-items: center; }
+        .todo-item a { margin-left: 10px; text-decoration: none; color: blue; }
+        .todo-item button { margin-left: 5px; cursor: pointer; }
+        .error-message { color: red; font-weight: bold; }
+    </style>
+</head>
+
+<body>
+    <% if (locals.error) { %>
+        <h3 class="error-message">
+            <%= error %>
+        </h3>
+    <% } %>
+
+    <h2>Register Name</h2>
+    <form action="/greet" method="get">
+        Register:
+        <input type="text" name="name" id="name" placeholder="Name">
+        <input type="submit" value="Go Next">
+    </form>
+
+    <% if (locals.names && names.length > 0) { %>
+        <div class="greeting-list">
+            <h3>Registered Users:</h3>
+            <ul>
+                <% names.forEach((name, index) => { %>
+                    <li class="greeting-item">
+                        <a href="/wazzup/<%= index %>">Wazzup <%= name %></a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <hr>
+
+    <h2>TODO List</h2>
+    <form action="/task" method="post">
+        Add Task:
+        <input type="text" name="task" id="task" placeholder="New Task">
+        <button type="submit">Add Task</button>
+    </form>
+
+    <% if (locals.tasks && tasks.length > 0) { %>
+        <div class="todo-list">
+            <h3>Tasks:</h3>
+            <ul>
+                <% tasks.forEach((task, index) => { %>
+                    <li class="todo-item">
+                        <span><%= task %></span>
+                        <a href="/task/delete/<%= index %>" style="color:red;">Delete</a>
+                        <% if (index > 0) { %>
+                            <a href="/task/move/<%= index %>/up">⬆️</a>
+                        <% } %>
+                        <% if (index < tasks.length - 1) { %>
+                            <a href="/task/move/<%= index %>/down">⬇️</a>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+</body>
+
+</html>
