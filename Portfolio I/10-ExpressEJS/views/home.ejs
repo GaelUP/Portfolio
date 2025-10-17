@@ -1,0 +1,30 @@
+<%- include('partials/header', { name: name, title: 'Blog Home' }) %>
+
+    <h2>Welcome to the Blog, <%= name %>!</h2>
+
+    <h3>Submit a New Post</h3>
+    <form action="/post" method="post">
+        <input type="text" name="title" placeholder="Post Title" required>
+        <textarea name="content" placeholder="Your Post Content" rows="5" required></textarea>
+        <button type="submit">Add Post</button>
+    </form>
+
+    <h3>Available Posts</h3>
+    <% if (posts.length === 0) { %>
+        <p>No posts available yet. Be the first to add one!</p>
+    <% } else { %>
+        <% posts.forEach(post => { %>
+            <div class="post-summary">
+                <h4><%= post.title %></h4>
+                <p>
+                    <%= truncate(post.content, 100) %>
+                    <% if (post.content.length > 100) { %>
+                        <a href="/post/<%= post.id %>">Read More</a>
+                    <% } %>
+                </p>
+                <small>By <%= post.author %> on <%= post.createdAt.toLocaleDateString() %></small>
+            </div>
+        <% }); %>
+    <% } %>
+
+<%- include('partials/footer') %>

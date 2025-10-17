@@ -1,0 +1,8 @@
+<%- include('partials/header', { name: name, title: 'Greeting' }) %>
+
+    <h1>Hello, <%= name %>!</h1>
+    <p>You logged in with <strong><%= security %></strong> security.</p>
+    <br>
+    <a href="/home" class="btn-link">Go to Home (Blog)</a>
+
+<%- include('partials/footer') %>

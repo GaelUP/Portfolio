@@ -1,0 +1,17 @@
+<%- include('partials/header', { name: name, title: post.title }) %>
+
+    <h2>Edit/View Post</h2>
+    <form action="/post/edit/<%= post.id %>" method="post">
+        <label for="postTitle">Title:</label>
+        <input type="text" name="title" id="postTitle" value="<%= post.title %>" required>
+
+        <label for="postContent">Content:</label>
+        <textarea name="content" id="postContent" rows="10" required><%= post.content %></textarea>
+
+        <button type="submit">Update Post</button>
+        <a href="/post/delete/<%= post.id %>" class="btn-link" style="background-color: #dc3545;">Delete Post</a>
+    </form>
+    <br>
+    <a href="/home" class="btn-link" style="background-color: #6c757d;">Back to Home</a>
+
+<%- include('partials/footer') %>
